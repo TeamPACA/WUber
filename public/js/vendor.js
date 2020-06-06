@@ -90,10 +90,29 @@ $(document).ready(function () {
             console.log(data)
         }).then(function (data) {
             data.forEach(element => {
-                console.log(element.id);
-                getwines(element.id);
+
+                getwines(element.id)
+                console.log('#winery'+element.id);
                 const wineries = renderwineries(element);
-                $('#wineries').append(wineries);
+
+               
+                   
+                
+                //console.log('#winery'+element.id);
+               
+                
+                
+                /*
+                .then(function(){
+                    $('#winery'+element.id).text("here"); 
+
+                }) 
+                */
+                
+                $('#wineries').append(wineries)
+
+                            
+
 
             });
         })
@@ -103,22 +122,34 @@ $(document).ready(function () {
 
     function getwines(id){
         $.get("/api/wines/" + id,function(data){
-            console.log(data)
+            console.log(data);
         })
     }
+/*
+    function renderwines(data) {
+        const block = `     <h5>${data.winename}</h5>
+                            <p >${data.variety}</p>
+                            <p >${data.year}</p>
+                            <p >${data.price}</p>
+                    </div>`
+        return block
+    }
+*/
+
+
 
 
     function renderwineries(data) {
         const block = `<div class="card border-dark mb-3">
                <div class="card-header">${data.wineryname}</div>
                <div class="card-body text-dark">                    
-                    <div class="row>
+                    <div class="row">
                         <div class="col-4">
                             <h5 class="card-title" data=${data.id}>${data.wineryname}</h5>
                             <p class="card-text">Address: ${data.wineaddress}</p>
                             <p class="card-text">Email: ${data.wineemail}</p>
                             <p class="card-text">Phone: ${data.winephone}</p>
-                            <button type="submit" class="btn btn-primary wine-input" data=${data.id}>Add a wine</button>
+                            <button type="submit" class="btn btn-primary wine-input mb-2" data=${data.id}>Add a wine</button>
                             <button type="submit" class="btn btn-primary winery-event" data=${data.id}>Add a calendar event</button>
                         </div>
                         <div class="col-8" id="winery${data.id}">
