@@ -2,3 +2,22 @@ form.signup,
 form.login {
   margin-top: 50px;
 }
+#wine-modal {
+  display:none;
+  position: fixed;
+  top:10%;
+  left:25%;
+  width:50%;
+  z-index: 1;
+  overflow: auto;
+}
+
+#event-modal{
+  display:none;
+  position: fixed;
+  top:10%;
+  left:25%;
+  width:50%;
+  z-index: 1;
+  overflow: auto;
+}
