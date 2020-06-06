@@ -12,11 +12,24 @@
         <div class="col-md-6 col-md-offset-3">
             <h2>Welcome <span class="member-name"></span></h2>
         </div>
-        <li>
+        <div class="col-md-6 col-md-offset-3">
+            <li>
 
-            {{#each Winerys}}
-            {{> blocks/winery-block}}
-            {{/each}}
-
+                {{#each Winerys}}
+                {{> blocks/winery-block}}
+                {{/each}}
+            </li>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <!-- Search form -->
+            <form class="form-inline d-flex justify-content-center md-form form-sm active-purple-2 mt-2">
+                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                    aria-label="Search" id="winery-search">
+                <button class="btn btn-primary" id="search-for-winery-btn"><i class="fas fa-search"
+                        aria-hidden="true"></i></button>
+            </form>
+        </div>
     </div>
 </div>
