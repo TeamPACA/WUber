@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS platform;
+CREATE DATABASE platform;
