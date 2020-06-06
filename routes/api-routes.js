@@ -76,4 +76,31 @@ module.exports = function(app) {
       res.json(result)
     })
   })
+
+   //Add wine
+//POST api route for adding wines into the database.
+app.post("/api/addwine",function(req,res){
+
+  console.log(req.body)
+  db.Wine.create(req.body).then(function(result){
+      res.json(result);
+  }).catch(function(err){
+    res.status(401).json(err);
+  });
+});
+//POST api route for adding events into the database.
+app.post("/api/addEvent",function(req,res){
+
+  console.log(req.body)
+  db.Event.create(req.body).then(function(result){
+      res.json(result);
+  }).catch(function(err){
+    res.status(401).json(err);
+  });
+});
+
+
+
+
+
 };
