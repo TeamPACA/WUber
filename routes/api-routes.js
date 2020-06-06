@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 var db = require("../models");
 var passport = require("../config/passport");
+var sequelize = require("sequelize");
 
 module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -100,10 +101,11 @@ module.exports = function (app) {
   });
 
   // CLIENT SIDE LOGIC
-  app.get("api/wineries_name/:wineryname", function (req, res) {
+  app.get("/api/wineries_name/:wineryname", function (req, res) {
     console.log("in api route" + req.params.wineryname)
     var userSearchValue = req.params.wineryname
-    sequelize.query(`SELECT * FROM Wineries where locate(wineryname, "${userSearchValue}") > 0`, {
+    console.log(userSearchValue)
+    db.Wineries.sequelize.query(`SELECT * FROM Wineries where locate("${userSearchValue}", wineryname) > 0`, {
         type: sequelize.QueryTypes.SELECT
       })
       .then(searchResult => {
@@ -113,6 +115,20 @@ module.exports = function (app) {
         // We don't need spread here, since only the results will be returned for select queries
       })
   })
+
+  // app.get("/api/wineries_name/Lukes", function (req, res) {
+  //   console.log("in api route")
+  //   db.Wineries.sequelize.query(`SELECT * FROM Wineries where locate(wineryname, "Lukes") > 0`, {
+  //       type: sequelize.QueryTypes.SELECT
+  //     })
+  //     .then(searchResult => {
+  //       console.log("API ROUTE firing")
+  //       console.log(searchResult)
+  //       res.json(searchResult)
+  //       // We don't need spread here, since only the results will be returned for select queries
+  //     })
+  //   // })
+  // })
 
 
 
