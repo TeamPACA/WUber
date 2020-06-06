@@ -1,35 +1,122 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/logout">
-                Logout
-            </a>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Welcome <span class="member-name"></span></h2>
-        </div>
-        <div class="col-md-6 col-md-offset-3">
-            <li>
-
-                {{#each Winerys}}
-                {{> blocks/winery-block}}
-                {{/each}}
-            </li>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <!-- Search form -->
-            <form class="form-inline d-flex justify-content-center md-form form-sm active-purple-2 mt-2">
-                <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
-                    aria-label="Search" id="winery-search">
-                <button class="btn btn-primary" id="search-for-winery-btn"><i class="fas fa-search"
-                        aria-hidden="true"></i></button>
-            </form>
+<br>
+<div>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Some web-page presentation</h1>
+            <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur omnis consequuntur
+                ut voluptatem doloribus officia alias et quas repellendus, nihil aut, maxime ipsa doloremque.
+                Eveniet beatae quasi cum itaque cumque.</p>
         </div>
     </div>
 </div>
+<br>
+<div class="row">
+    <div class="col-sm-5"></div>
+    <nav class="navbar navbar-default">
+        {{!-- <div class="container-fluid"> --}}
+        <div class="col-sm-6">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/logout">
+                    Logout
+                </a>
+            </div>
+        </div>
+</div>
+</div>
+</nav>
+<br>
+<div class="container big-c ">
+    <div class="container" id="bottom-c">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="container">
+                <div class="row">
+                   
+                    <div class="col-md-6 col-md-offset-3">
+                        <h2>Welcome <span class="member-name"></span></h2>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                        <li>
+                            {{#each Winerys}}
+                            {{> blocks/winery-block}}
+                            {{/each}}
+                        </li>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Search form -->
+                        <form class="form-inline d-flex justify-content-center md-form form-sm active-purple-2 mt-2">
+                            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                                aria-label="Search" id="winery-search">
+                            <button class="btn btn-primary" id="search-for-winery-btn"><i class="fas fa-search"
+                                    aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <br>
+        <br>
+        <div class="container" id="big-cc">
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="./old/assets/img/LeftCard.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Wine Selection</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+                                dolorem magni dignissimos nulla expedita tempora enim optio accusantium natus sunt
+                                pariatur repellendus, facere, suscipit, tenetur sint? Minus laudantium pariatur
+                                incidunt?</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="./old/assets/img/CenterCard.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">My wineries</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto
+                                inventore maiores facilis molestias modi sint dignissimos, et mollitia! Animi, debitis
+                                quibusdam fugit id ullam praesentium quam vel odio ipsa ipsum.</p>
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col mb-4">
+                    <div class="card">
+                        <img src="./old/assets/img/RightCard.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Book tasting</h5>
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.In aperiam
+                                modi repudiandae maxime ratione natus numquam alias adipisci nesciunt pariatur,
+                                accusamus ipsa reprehenderit et iusto tenetur doloremque sunt. Fugit, eum
+                            <p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+    </div>
+    <br>
+    <br>
+
+    <div class="footer" id="footer">
+        <div class="container">
+
+
+
+
+            <a class="btn btn-primary login" href="https://github.com/TeamPACA" role="button">LINK</a>
+
+
+        </div>
+    </div>
+
+    <br>
+    <br>
