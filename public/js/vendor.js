@@ -9,6 +9,18 @@ $(document).ready(function () {
     const wphone = $('#winephone-input');
     const wemail = $('#wineemail-input');
 
+    //Adding Event handler for adding of wines and events modals.
+    $('body').on('click','.wine-input',function(){
+        let wineryID = ($(this).attr("data"));
+        $('#wine-modal')[0].style.display = "block";
+        wineSubmit(wineryID);
+    });
+    $('body').on('click','.winery-event',function(){
+        let wineryID = ($(this).attr("data"));
+        $('#event-modal')[0].style.display = "block";
+        eventSubmit(wineryID);
+    });
+
 
 
     $.get("/api/user_data").then(function (data) {
@@ -85,8 +97,62 @@ $(document).ready(function () {
                  <p class="card-text">Address: ${data.wineaddress}</p>
                  <p class="card-text">Email: ${data.wineemail}</p>
                  <p class="card-text">Phone: ${data.winephone}</p>
+                 <button type="submit" class="btn btn-primary wine-input" data=${data.id}>Add a wine</button>
+                 <button type="submit" class="btn btn-primary winery-event" data=${data.id}>Add a calendar event</button>
                </div>
              </div>`
         return block
     }
+
+   //Function for submitting a wine and calling the API. Passing in the winery id as a parameter.
+   function wineSubmit(winery){
+    $('form.addwine').on('submit', function(event){
+        event.preventDefault();
+        const wineData = {
+            winename: $('#winename-input').val().trim(),
+            winevariety: $('#winevariety-input').val().trim(),
+            wineyear: $('#wineyear-input').val().trim(),
+            winedescription: $('#winedescription-input').val().trim(),
+            wineprice: $('#wineprice-input').val().trim(),
+            wineryid: winery,
+        }
+
+        console.log(wineData);
+        
+        addwine(wineData.winename,wineData.winevariety,wineData.wineyear,wineData.winedescription,wineData.wineprice,wineData.wineryid);
+        //Clear out the contents and drop the modal. May not be necessary to do this as there is a page reload.
+        $('#winename-input').val("");
+        $('#winevariety-input').val("");
+        $('#wineyear-input').val("");
+        $('#winedescription-input').val("");
+        $('#wineprice-input').val("");
+        $('#wine-modal')[0].style.display = "none";
+
+    })
+}
+
+    //function to post wine to the database via /api/addwine route
+    
+    function addwine(name,variety,year,description,price,id){
+        console.log("Wine Submitted");
+        $.post("/api/addwine/", {
+            winename:name,
+            variety:variety,
+            year:year,
+            description: description,
+            price: price,
+            WineryId: id,
+        }).then(function(data){
+            console.log(data)
+            window.location.reload();
+        }).catch(function(){
+            console.log("API failure")
+        });
+    }; 
+
+
+
+
+
+
 });
