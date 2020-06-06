@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/logout">
+                Logout
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Welcome Vendor <span class="member-name"></span></h2>
+            <h2>Welcome Vendor <span class="memberid"></span></h2>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form class="addwinery">
+                <div class="form-group">
+                    <label for="exampleInputWinery">Winery name</label>
+                    <input type="wineryname" class="form-control" id="wineryname-input" placeholder="Winery name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputWineryAddress">Address</label>
+                    <input type="wineaddress" class="form-control" id="wineaddress-input" placeholder="Address">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInpupostcode">Postcode</label>
+                    <input type="winepostcode" class="form-control" id="winepostcode-input" placeholder="Postcode">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPhone">Phone</label>
+                    <input type="winephone" class="form-control" id="winephone-input" placeholder="Phone">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail">Email</label>
+                    <input type="wineemail" class="form-control" id="wineemail-input" placeholder="Email">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Winery</button>
+            </form>
+
+        </div>
+        <div class="col-sm-6">
+            <div class="container">
+                <h1>Wineries</h1>
+                <div id="wineries"></div>
+
+            </div>
+
+
+
+
+        </div>
+
+    </div>
+</div>
