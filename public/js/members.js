@@ -13,13 +13,15 @@ $(document).ready(function () {
     event.preventDefault();
     console.log("button press")
     let wineryname = searchedWinery.val().trim();
-    $.get("api/wineries_name/" + wineryname, function (data) {
+    $.get("/api/wineries_name/" + wineryname, function (data) {
       console.log("in get req")
 
 
     }).then(function (data) {
       console.log(data)
       console.log("Working")
+    }).catch(function () {
+      console.log("api fail")
     })
 
   }
