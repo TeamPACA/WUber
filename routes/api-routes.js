@@ -76,8 +76,33 @@ module.exports = function(app) {
       res.json(result)
     })
   })
+//**************************************************************** */
+//   WINE API routes
+//**************************************************************** */
 
-   //Add wine
+//GET route for retrieving all wines from the database.
+  app.get("/api/wines/", function(req,res){
+    db.Wine.findAll({}).then(function(result){
+    res.json(result)
+  })
+})
+
+
+//GET roue for retrieving all wines by winery.
+  app.get("/api/wines/:id", function(req,res){
+      db.Wine.findAll({
+        where: {
+          WineryId:req.params.id
+        }
+      }).then(function(result){
+      res.json(result)
+  })
+})
+
+//**************************************************************** */
+//   Event API routes
+//**************************************************************** */
+
 //POST api route for adding wines into the database.
 app.post("/api/addwine",function(req,res){
 
@@ -88,6 +113,9 @@ app.post("/api/addwine",function(req,res){
     res.status(401).json(err);
   });
 });
+
+
+
 //POST api route for adding events into the database.
 app.post("/api/addEvent",function(req,res){
 
