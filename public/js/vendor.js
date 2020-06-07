@@ -9,7 +9,7 @@ $(document).ready(function () {
     const wphone = $('#winephone-input');
     const wemail = $('#wineemail-input');
 
-    //Adding Event handler for adding of wines and events modals.
+//Adding Event handlers for adding of wines,wineries and events modals.
     $('body').on('click','.wine-input',function(){
         let wineryID = ($(this).attr("data"));
         $('#wine-modal')[0].style.display = "block";
@@ -22,8 +22,12 @@ $(document).ready(function () {
     });
 
     $('body').on('click','.winery-addition',function(){
-        console.log("winery modal")
         $('#winery-modal')[0].style.display = "block";
+        
+    });
+    $('body').on('click','.reload-page',function(){
+        console.log("get me outta here")
+        location.reload();
         
     });
 
