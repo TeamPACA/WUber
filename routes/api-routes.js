@@ -100,10 +100,6 @@ module.exports = function (app) {
   })
 })
 
-//**************************************************************** */
-//   Event API routes
-//**************************************************************** */
-
 
   //Add wine
   //POST api route for adding wines into the database.
@@ -119,6 +115,9 @@ module.exports = function (app) {
   });
 
 
+//**************************************************************** */
+//   Event API routes
+//**************************************************************** */
 
 
 
@@ -133,6 +132,19 @@ app.post("/api/addEvent",function(req,res){
       res.status(401).json(err);
     });
   });
+
+//Get all events by winery id api route.
+  app.get("/api/events/:id", function(req,res){
+    db.Event.findAll({
+      where: {
+        WineryId:req.params.id
+      }
+    }).then(function(result){
+    res.json(result)
+  })
+})
+
+
 
   // CLIENT SIDE LOGIC
   app.get("/api/wineries_name/:wineryname", function (req, res) {

@@ -91,7 +91,8 @@ $(document).ready(function () {
         }).then(function (data) {
             data.forEach(element => {
 
-                getwines(element.id)
+                getwines(element.id);
+                getevents(element.id);
                 console.log('#winery'+element.id);
                 const wineries = renderwineries(element);
 
@@ -125,6 +126,14 @@ $(document).ready(function () {
             console.log(data);
         })
     }
+    function getevents(id){
+        $.get("/api/events/" + id,function(data){
+            console.log(data);
+        })
+    }
+
+
+
 /*
     function renderwines(data) {
         const block = `     <h5>${data.winename}</h5>
@@ -149,8 +158,8 @@ $(document).ready(function () {
                             <p class="card-text">Address: ${data.wineaddress}</p>
                             <p class="card-text">Email: ${data.wineemail}</p>
                             <p class="card-text">Phone: ${data.winephone}</p>
-                            <button type="submit" class="btn btn-primary wine-input mb-2" data=${data.id}>Add a wine</button>
-                            <button type="submit" class="btn btn-primary winery-event" data=${data.id}>Add a calendar event</button>
+                            <button type="submit" class="btn btn-primary wine-input mt-2" data=${data.id}>Add a wine</button>
+                            <button type="submit" class="btn btn-primary winery-event mt-2" data=${data.id}>Add a calendar event</button>
                         </div>
                         <div class="col-8" id="winery${data.id}">
                 
@@ -205,7 +214,48 @@ $(document).ready(function () {
         }).catch(function(){
             console.log("API failure")
         });
+    };
+    
+
+    function eventSubmit(winery){
+        $('form.addevent').on('submit', function(event){
+        event.preventDefault();
+        const eventData = {
+            eventname: $('#eventname-input').val().trim(),
+            time: $('#eventtime-input').val().trim(),
+            date: $('#eventdate-input').val().trim(),
+            wineryid: winery,
+        }
+        console.log(eventData);
+
+        addevent(eventData.eventname,eventData.time,eventData.date,eventData.wineryid)
+        //$('#eventname-input').val("");
+        //$('#eventtime-input').val("");
+        //$('#eventdate-input').val("");
+
+        $('#event-modal')[0].style.display = "none";
+
+        }) 
+    }       
+
+
+
+    function addevent(name,time,date,id){
+        console.log("Event Submitted");
+            $.post("/api/addEvent/", {
+            eventname:name,
+            time:time,
+            date:date,
+            WineryId: id,
+        }).then(function(data){
+            console.log(data)
+            window.location.reload();
+        }).catch(function(){
+            console.log("API failure")
+        });
     }; 
+    
+
 
 
 
