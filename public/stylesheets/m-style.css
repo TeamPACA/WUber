@@ -85,6 +85,16 @@ form.login {
   z-index: 1;
   overflow: auto;
 }
+#winery-modal{
+    display:none;
+    position: fixed;
+    top:10%;
+    left:25%;
+    width:50%;
+    z-index: 1;
+    overflow: auto;
+  }
+  
 
 
 
