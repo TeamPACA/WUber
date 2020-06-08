@@ -9,6 +9,7 @@ $(document).ready(function () {
     const wphone = $('#winephone-input');
     const wemail = $('#wineemail-input');
 
+
 //Adding Event handlers for adding of wines,wineries and events modals.
     $('body').on('click','.wine-input',function(){
         let wineryID = ($(this).attr("data"));
@@ -107,7 +108,7 @@ $(document).ready(function () {
 
             data.forEach(element =>{
                 const tablerow = $("<tr>") ;
-                tablerow.html(`<td>${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>${element.price}</td>`);
+                tablerow.html(`<td>${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>$${element.price}</td>`);
                 $('#winery' + id).append(tablerow);
             })
 

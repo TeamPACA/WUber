@@ -94,7 +94,9 @@ form.login {
     z-index: 1;
     overflow: auto;
   }
-  
+.card-body{
+  background-color:#dfd4d4 ;
+}
 
 
 

@@ -143,6 +143,18 @@ app.post("/api/addEvent",function(req,res){
     res.json(result)
   })
 })
+//**************************************************************** */
+//   Booking API routes
+//**************************************************************** */
+app.post("/api/createBooking", function (req, res) {
+
+  db.Booking.create(req.body).then(function (result) {
+    res.json(result);
+  }).catch(function (err) {
+    res.status(401).json(err);
+  });
+});
+
 
 
 
