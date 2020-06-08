@@ -114,6 +114,23 @@ module.exports = function (app) {
     });
   });
 
+  //Edit wine name
+  app.put("/api/wine", function(req,res){
+    db.Wine.update({
+      winename: req.body.name,
+    },{
+      where: {
+        id: req.body.id
+      }
+    }).then(function(result){
+      res.json(result);
+    }).catch(function(err){
+      res.json(err);
+    })
+  })
+
+
+
 
 //**************************************************************** */
 //   Event API routes

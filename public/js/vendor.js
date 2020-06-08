@@ -29,6 +29,23 @@ $(document).ready(function () {
         location.reload();        
     });
 
+    $(document).on('click','.winetable',function(){
+        $(this).attr('contenteditable', 'true');
+
+
+    });
+
+    $(document).on('blur','.winetable',function(){
+        let newtext = $(this).text();
+        let id = $(this).attr("id");
+        console.log(newtext, id)
+        const wineedit = {
+            name: newtext,
+            id: id
+        };
+        editwine(wineedit);
+
+    });
 
 
 
@@ -107,7 +124,8 @@ $(document).ready(function () {
 
             data.forEach(element =>{
                 const tablerow = $("<tr>") ;
-                tablerow.html(`<td>${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>${element.price}</td>`);
+                tablerow.html(`
+                <td class="winetable" id=${element.id} contenteditable="false">${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>${element.price}</td>`);
                 $('#winery' + id).append(tablerow);
             })
 
@@ -127,7 +145,7 @@ $(document).ready(function () {
                <div class="card-header">${data.wineryname}</div>
                <div class="card-body text-dark">                    
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-sm-12 col-md-4 mb-3">
                             <h5 class="card-title" data=${data.id}>${data.wineryname}</h5>
                             <p class="card-text">Address: ${data.wineaddress}</p>
                             <p class="card-text">Email: ${data.wineemail}</p>
@@ -135,7 +153,7 @@ $(document).ready(function () {
                             <button type="submit" class="btn btn-primary wine-input mt-2" data=${data.id}>Add a wine</button>
                             <button type="submit" class="btn btn-primary winery-event mt-2" data=${data.id}>Add a calendar event</button>
                         </div>
-                        <div class="col-8"">
+                        <div class="col-sm-12 col-md-8"">
                                 <table class="table">
                                     <thead class="thead-dark">
                                         <tr>
@@ -242,6 +260,18 @@ $(document).ready(function () {
             console.log("API failure")
         });
     }; 
-    
+
+
+//####### edit ###########//
+
+    function editwine(data){
+        $.ajax({
+            method: "PUT",
+            url:"/api/wine",
+            data: data
+        }).then(function(result){
+            console.log(result)
+        })
+    }
 
 });
