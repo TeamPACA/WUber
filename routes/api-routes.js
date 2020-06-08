@@ -77,28 +77,28 @@ module.exports = function (app) {
       res.json(result)
     })
   })
-//**************************************************************** */
-//   WINE API routes
-//**************************************************************** */
+  //**************************************************************** */
+  //   WINE API routes
+  //**************************************************************** */
 
-//GET route for retrieving all wines from the database.
-  app.get("/api/wines/", function(req,res){
-    db.Wine.findAll({}).then(function(result){
-    res.json(result)
-  })
-})
-
-
-//GET roue for retrieving all wines by winery.
-  app.get("/api/wines/:id", function(req,res){
-      db.Wine.findAll({
-        where: {
-          WineryId:req.params.id
-        }
-      }).then(function(result){
+  //GET route for retrieving all wines from the database.
+  app.get("/api/wines/", function (req, res) {
+    db.Wine.findAll({}).then(function (result) {
       res.json(result)
+    })
   })
-})
+
+
+  //GET roue for retrieving all wines by winery.
+  app.get("/api/wines/:id", function (req, res) {
+    db.Wine.findAll({
+      where: {
+        WineryId: req.params.id
+      }
+    }).then(function (result) {
+      res.json(result)
+    })
+  })
 
 
   //Add wine
@@ -115,14 +115,14 @@ module.exports = function (app) {
   });
 
 
-//**************************************************************** */
-//   Event API routes
-//**************************************************************** */
+  //**************************************************************** */
+  //   Event API routes
+  //**************************************************************** */
 
 
 
-//POST api route for adding events into the database.
-app.post("/api/addEvent",function(req,res){
+  //POST api route for adding events into the database.
+  app.post("/api/addEvent", function (req, res) {
 
 
     console.log(req.body)
@@ -133,27 +133,27 @@ app.post("/api/addEvent",function(req,res){
     });
   });
 
-//Get all events by winery id api route.
-  app.get("/api/events/:id", function(req,res){
+  //Get all events by winery id api route.
+  app.get("/api/events/:id", function (req, res) {
     db.Event.findAll({
       where: {
-        WineryId:req.params.id
+        WineryId: req.params.id
       }
-    }).then(function(result){
-    res.json(result)
+    }).then(function (result) {
+      res.json(result)
+    })
   })
-})
-//**************************************************************** */
-//   Booking API routes
-//**************************************************************** */
-app.post("/api/createBooking", function (req, res) {
+  //**************************************************************** */
+  //   Booking API routes
+  //**************************************************************** */
+  app.post("/api/createBooking", function (req, res) {
 
-  db.Booking.create(req.body).then(function (result) {
-    res.json(result);
-  }).catch(function (err) {
-    res.status(401).json(err);
+    db.Booking.create(req.body).then(function (result) {
+      res.json(result);
+    }).catch(function (err) {
+      res.status(401).json(err);
+    });
   });
-});
 
 
 
@@ -172,6 +172,27 @@ app.post("/api/createBooking", function (req, res) {
         res.json(searchResult)
         // We don't need spread here, since only the results will be returned for select queries
       })
+  })
+
+  app.get("/api/wineries_return/:searched", function (req, res) {
+    console.log(req.params.searched)
+    let searchedValue = req.params.searched
+    db.Wineries.sequelize.query(`SELECT * FROM Wineries where locate("${searchedValue}", wineryname) > 0`, {
+      type: sequelize.QueryTypes.SELECT
+    }).then(function (result) {
+      res.json(result)
+    })
+  })
+
+
+  app.get("/api/wines/:id", function (req, res) {
+    db.Wine.findAll({
+      where: {
+        WineryId: req.params.id
+      }
+    }).then(function (result) {
+      res.json(result)
+    })
   })
 
   // app.get("/api/wineries_name/Lukes", function (req, res) {
