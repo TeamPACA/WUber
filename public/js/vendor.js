@@ -15,6 +15,7 @@ $(document).ready(function () {
         $('#wine-modal')[0].style.display = "block";
         wineSubmit(wineryID);
     });
+
     $('body').on('click','.winery-event',function(){
         let wineryID = ($(this).attr("data"));
         $('#event-modal')[0].style.display = "block";
@@ -22,14 +23,11 @@ $(document).ready(function () {
     });
 
     $('body').on('click','.winery-addition',function(){
-        $('#winery-modal')[0].style.display = "block";
-        
+        $('#winery-modal')[0].style.display = "block";        
     });
-    $('body').on('click','.reload-page',function(){
-        console.log("get me outta here")
-        location.reload();
-        
-    });
+   // $('body').on('click','.reload-page',function(){
+   //     location.reload();        
+   // });
 
 
 
@@ -94,42 +92,31 @@ $(document).ready(function () {
             console.log(data)
         }).then(function (data) {
             data.forEach(element => {
-
                 getwines(element.id);
                 getevents(element.id);
-                console.log('#winery'+element.id);
-                const wineries = renderwineries(element);
-
-               
-                   
-                
                 //console.log('#winery'+element.id);
-               
-                
-                
-                /*
-                .then(function(){
-                    $('#winery'+element.id).text("here"); 
-
-                }) 
-                */
-                
-                $('#wineries').append(wineries)
-
-                            
-
-
+                const wineries = renderwineries(element);                
+                $('#wineries').append(wineries)       
             });
         })
-
     };
+
 
 
     function getwines(id){
         $.get("/api/wines/" + id,function(data){
-            console.log(data);
+            //console.log(data);
+            data.forEach(element =>{
+                console.log(element.winename);
+                console.log(element.variety);
+                console.log(element.year);
+                console.log(element.description);
+                console.log(element.price);
+            })
+
         })
     }
+
     function getevents(id){
         $.get("/api/events/" + id,function(data){
             console.log(data);
@@ -138,16 +125,16 @@ $(document).ready(function () {
 
 
 
-/*
+
     function renderwines(data) {
         const block = `     <h5>${data.winename}</h5>
                             <p >${data.variety}</p>
                             <p >${data.year}</p>
                             <p >${data.price}</p>
-                    </div>`
+                    `
         return block
     }
-*/
+
 
 
 
