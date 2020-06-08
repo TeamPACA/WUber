@@ -100,22 +100,15 @@ $(document).ready(function () {
         })
     };
 
-
+    //Function to get all wines from the database for each winery under the user account.
+    //Render all of the wines to the winery card.
     function getwines(id){
         $.get("/api/wines/" + id,function(data){
-            //console.log(data);
-                $('#winery' + id).html("<h5>Wine name Variety Year price</h5>");
-            data.forEach(element =>{
-                const tablerow = $("<div>") ;
-                tablerow.html(`${element.winename}   ${element.variety}      ${element.year}     ${element.price} \n`);
-                tablerow.addClass("row");
-                $('#winery' + id).append(tablerow);
 
-                //$('#winery' + id).append(`${element.winename}   ${element.variety}      ${element.year}     ${element.price} \n`);
-                //$('#winery' + id).append(element.variety);
-                //$('#winery' + id).append(element.year);
-                //$('#winery' + id).append(element.description);
-                //$('#winery' + id).append(element.price);
+            data.forEach(element =>{
+                const tablerow = $("<tr>") ;
+                tablerow.html(`<td>${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>${element.price}</td>`);
+                $('#winery' + id).append(tablerow);
             })
 
         })
@@ -142,14 +135,28 @@ $(document).ready(function () {
                             <button type="submit" class="btn btn-primary wine-input mt-2" data=${data.id}>Add a wine</button>
                             <button type="submit" class="btn btn-primary winery-event mt-2" data=${data.id}>Add a calendar event</button>
                         </div>
-                        <div class="col-8" id="winery${data.id}">
-                
+                        <div class="col-8"">
+                                <table class="table">
+                                    <thead class="thead-dark">
+                                        <tr>
+                                            <th scope="col">Wine Name</th>
+                                            <th scope="col">Variety</th>
+                                            <th scope="col">Year</th>
+                                            <th scope="col">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="winery${data.id}">
+                                    </tbody>
+                                </table>
+
                         </div>
                     </div>
                 </div>
              </div>`
         return block
     }
+    //<tbody id="winery${data.id}>
+
 
    //Function for submitting a wine and calling the API. Passing in the winery id as a parameter.
    function wineSubmit(winery){
@@ -236,11 +243,5 @@ $(document).ready(function () {
         });
     }; 
     
-
-
-
-
-
-
 
 });
