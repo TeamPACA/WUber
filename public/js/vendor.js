@@ -25,9 +25,9 @@ $(document).ready(function () {
     $('body').on('click','.winery-addition',function(){
         $('#winery-modal')[0].style.display = "block";        
     });
-   // $('body').on('click','.reload-page',function(){
-   //     location.reload();        
-   // });
+    $('body').on('click','#reload-page',function(){
+        location.reload();        
+    });
 
 
 
@@ -62,7 +62,7 @@ $(document).ready(function () {
             wemail.val("");
         });
 
-        getwineries(memberid);
+        getwineries(memberid)
 
     })
 
@@ -93,8 +93,7 @@ $(document).ready(function () {
         }).then(function (data) {
             data.forEach(element => {
                 getwines(element.id);
-                getevents(element.id);
-                //console.log('#winery'+element.id);
+                //getevents(element.id);
                 const wineries = renderwineries(element);                
                 $('#wineries').append(wineries)       
             });
@@ -102,16 +101,21 @@ $(document).ready(function () {
     };
 
 
-
     function getwines(id){
         $.get("/api/wines/" + id,function(data){
             //console.log(data);
+                $('#winery' + id).html("<h5>Wine name Variety Year price</h5>");
             data.forEach(element =>{
-                console.log(element.winename);
-                console.log(element.variety);
-                console.log(element.year);
-                console.log(element.description);
-                console.log(element.price);
+                const tablerow = $("<div>") ;
+                tablerow.html(`${element.winename}   ${element.variety}      ${element.year}     ${element.price} \n`);
+                tablerow.addClass("row");
+                $('#winery' + id).append(tablerow);
+
+                //$('#winery' + id).append(`${element.winename}   ${element.variety}      ${element.year}     ${element.price} \n`);
+                //$('#winery' + id).append(element.variety);
+                //$('#winery' + id).append(element.year);
+                //$('#winery' + id).append(element.description);
+                //$('#winery' + id).append(element.price);
             })
 
         })
@@ -122,20 +126,6 @@ $(document).ready(function () {
             console.log(data);
         })
     }
-
-
-
-
-    function renderwines(data) {
-        const block = `     <h5>${data.winename}</h5>
-                            <p >${data.variety}</p>
-                            <p >${data.year}</p>
-                            <p >${data.price}</p>
-                    `
-        return block
-    }
-
-
 
 
 
