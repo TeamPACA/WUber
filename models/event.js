@@ -29,6 +29,12 @@ module.exports = function(sequelize, DataType){
             }
         });
     };
+    Event.associate = function(models){
+        Event.hasMany(models.Booking,{
+            onDelete: "cascade"
+        });
+    };
+ 
     
 
     return Event
