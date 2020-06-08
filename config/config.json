@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "123456789",
-    "database": "platform",
+    "password": null,
+    "database": "uberwine",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
