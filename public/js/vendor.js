@@ -137,7 +137,7 @@ $(document).ready(function () {
                         </div>
                         <div class="col-8"">
                                 <table class="table">
-                                    <thead>
+                                    <thead class="thead-dark">
                                         <tr>
                                             <th scope="col">Wine Name</th>
                                             <th scope="col">Variety</th>
