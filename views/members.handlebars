@@ -10,40 +10,35 @@
     </div>
 </div>
 <br>
-<div class="row">
-    <div class="col-sm-5"></div>
-    <nav class="navbar navbar-default">
-        {{!-- <div class="container-fluid"> --}}
-        <div class="col-sm-6">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/logout">
-                    Logout
-                </a>
-            </div>
-        </div>
-</div>
-</div>
-</nav>
-<br>
 <div class="container big-c ">
+    <div class="row">
+        <div class="col-sm-4"></div>
+        {{!-- <nav class="navbar navbar-default"> --}}
+            <div class="navbar-header">
+                <a  class="btn btn-primary login" href="/logout"> Logout</a>
+            </div>
+        {{!-- </nav> --}}
+        <div class="col-sm-4"></div>
+    </div>
+    <br>
     <div class="container" id="bottom-c">
         <div class="row">
             <div class="col-sm-4"></div>
             <div class="container">
                 <div class="row">
-                   
+                    <div class="col-md-4 col-md-offset-3"></div>
                     <div class="col-md-6 col-md-offset-3">
-                        <h2>Welcome <span class="member-name"></span></h2>
+                        <h2 id="member">Welcome <span class="member-name"></span></h2>
                     </div>
-                    <div class="col-md-6 col-md-offset-3">
+                    {{!-- <div class="col-md-3 "></div> --}}
+                    {{!-- <div class="col-md-6 col-md-offset-3">
                         <li>
                             {{#each Winerys}}
                             {{> blocks/winery-block}}
                             {{/each}}
                         </li>
-                    </div>
+                    </div> --}}
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <!-- Search form -->
@@ -67,7 +62,7 @@
                         <img src="./old/assets/img/LeftCard.png" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Wine Selection</h5>
-                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+                            <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit.Exercitationem
                                 dolorem magni dignissimos nulla expedita tempora enim optio accusantium natus sunt
                                 pariatur repellendus, facere, suscipit, tenetur sint? Minus laudantium pariatur
                                 incidunt?</p>
@@ -105,18 +100,11 @@
     </div>
     <br>
     <br>
-
     <div class="footer" id="footer">
         <div class="container">
-
-
-
-
             <a class="btn btn-primary login" href="https://github.com/TeamPACA" role="button">LINK</a>
-
-
         </div>
     </div>
-
     <br>
     <br>
+    </div>

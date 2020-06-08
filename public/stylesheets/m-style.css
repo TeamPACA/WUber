@@ -22,6 +22,9 @@
 
 }
 
+.navbar-header , #member {
+  margin: 0px auto;
+}
 
 
 .btn-primary{
@@ -41,8 +44,8 @@
 #footer{
     
     color: black;
-    font-weight: bold;
     text-align: center;
+    text-size-adjust: 50%;
 }
 
 
