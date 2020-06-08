@@ -14,7 +14,7 @@ SO I CAN _so that i can reach a larger audience and sell more wine
 Our clients are the Wineries, and the wines amateurs of Adelaide. This platform connects these two worlds. To bring new wine experiences and foment new connections clients-producers 
 
 # Built With
-
+| HTML | CSS | JavaScript | Node.js | Sequelize | Express-Handlebars. 
 
 # Deployment
 (link)
