@@ -22,6 +22,9 @@
 
 }
 
+.navbar-header , #member {
+  margin: 0px auto;
+}
 
 
 .btn-primary{
@@ -41,8 +44,8 @@
 #footer{
     
     color: black;
-    font-weight: bold;
     text-align: center;
+    text-size-adjust: 50%;
 }
 
 
@@ -94,7 +97,9 @@ form.login {
     z-index: 1;
     overflow: auto;
   }
-  
+.card-body{
+  background-color:#dfd4d4 ;
+}
 
 
 
@@ -106,4 +111,16 @@ body
     background-position: center 200px;
     background-color: whitesmoke;
     font-family:century;
+}
+
+@media screen and (min-width: 601px) {
+  .card-header {
+    font-size: 50px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .card-header {
+    font-size: 30px;
+  }
 }

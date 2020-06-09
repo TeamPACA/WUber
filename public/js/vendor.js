@@ -29,8 +29,10 @@ $(document).ready(function () {
         location.reload();        
     });
 
+    //###### Editing & Deleting Wine ############//
     $(document).on('click','.winetable',function(){
         $(this).attr('contenteditable', 'true');
+        $(this).css('background-color', "white");
 
 
     });
@@ -44,16 +46,24 @@ $(document).ready(function () {
             id: id
         };
         editwine(wineedit);
+        $(this).css('background-color', "#dfd4d4")
 
     });
 
     $(document).on('click', '.delwine', function(){
         let x = $(this).attr("id");
-        console.log(x);
+        
         deletewine(x);
 
     })
 
+    //###### Editing & Deleting Event ############//
+
+    $(document).on('click', '.delevent', function(){
+        let x = $(this).attr("id");
+        
+        deleteevent(x);
+    })
 
 
 
@@ -117,7 +127,7 @@ $(document).ready(function () {
         }).then(function (data) {
             data.forEach(element => {
                 getwines(element.id);
-                //getevents(element.id);
+                getevents(element.id);
                 const wineries = renderwineries(element);                
                 $('#wineries').append(wineries)       
             });
@@ -145,7 +155,18 @@ $(document).ready(function () {
 
     function getevents(id){
         $.get("/api/events/" + id,function(data){
-            console.log(data);
+            data.forEach(element =>{
+
+                const tablerow = $("<tr>") ;
+                tablerow.html(`
+                <td id=${element.id} contenteditable="false">${element.eventname}</td>
+                <td>${element.time}</td>
+                <td>${element.date}</td>
+                <td><button class="delevent" id=${element.id}>Delete</button></td>`);
+                $('#eventsByWinery' + id).append(tablerow);
+
+
+            })
         })
     }
 
@@ -156,7 +177,7 @@ $(document).ready(function () {
                <div class="card-header">${data.wineryname}</div>
                <div class="card-body text-dark">                    
                     <div class="row">
-                        <div class="col-sm-12 col-md-4 mb-3">
+                        <div class="col-sm-12 col-md-4 mb-3" >
                             <h5 class="card-title" data=${data.id}>${data.wineryname}</h5>
                             <p class="card-text">Address: ${data.wineaddress}</p>
                             <p class="card-text">Email: ${data.wineemail}</p>
@@ -165,19 +186,37 @@ $(document).ready(function () {
                             <button type="submit" class="btn btn-primary winery-event mt-2" data=${data.id}>Add a calendar event</button>
                         </div>
                         <div class="col-sm-12 col-md-8"">
-                                <table class="table">
-                                    <thead class="thead-dark">
-                                        <tr>
-                                            <th scope="col">Wine Name</th>
-                                            <th scope="col">Variety</th>
-                                            <th scope="col">Year</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="winery${data.id}">
-                                    </tbody>
-                                </table>
+                        <div class="row">
+                        <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Wine Name</th>
+                                <th scope="col">Variety</th>
+                                <th scope="col">Year</th>
+                                <th scope="col">Price</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="winery${data.id}">
+                        </tbody>
+                        </table>                        
+                        </div>
+                        <div class="row">
+                        <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Event Namee</th>
+                                <th scope="col">Time</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody id="eventsByWinery${data.id}"">
+                        </tbody>
+                        </table>
+                        
+                        </div>
+
 
                         </div>
                     </div>
@@ -297,5 +336,14 @@ $(document).ready(function () {
         })
 
     }
+//####### Delete wines ########//
 
+    function deleteevent(id){
+        $.ajax({
+            method: "DELETE",
+            url: "/api/event/" + id
+        }).then(function(result){
+            window.location.reload();
+        })
+    }
 });

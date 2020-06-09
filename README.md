@@ -11,7 +11,7 @@ I WANT TO _promote my popular wines/vinyards_
 SO I CAN _so that i can reach a larger audience and sell more wine
 
 # CONCEPT 
-Our clients are the Wineries, and the wines amateurs of Adelaide. This platform connects these two worlds. To bring new wine experiences and foment new connections clients-producers 
+Our clients are the Wineries, the wines consumers and vendors of Adelaide. This platform connects these three words. To bring new wine experiences and foment new connections.
 
 # Built With
 | HTML | CSS | JavaScript | Node.js | Sequelize | Express-Handlebars. 

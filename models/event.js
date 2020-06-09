@@ -22,6 +22,12 @@ module.exports = function(sequelize, DataType){
     
     });
 
+
+    Event.associate = function(models){
+        Event.hasMany(models.Booking,{
+            onDelete: "cascade"
+        });
+    };
     Event.associate = function(models){
         Event.belongsTo(models.Wineries,{
             foreignKey:{
@@ -29,6 +35,7 @@ module.exports = function(sequelize, DataType){
             }
         });
     };
+ 
     
 
     return Event
