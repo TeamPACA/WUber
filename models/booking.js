@@ -12,6 +12,7 @@ module.exports = function(sequelize, DataType){
             }
         });
     };
+    
     Booking.associate = function(models){
         Booking.belongsTo(models.User,{
             foreignKey:{

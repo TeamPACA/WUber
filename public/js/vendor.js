@@ -219,11 +219,11 @@ $(document).ready(function () {
             eventname: $('#eventname-input').val().trim(),
             time: $('#eventtime-input').val().trim(),
             date: $('#eventdate-input').val().trim(),
-            wineryid: winery,
+            WineryId: winery,
         }
         console.log(eventData);
 
-        addevent(eventData.eventname,eventData.time,eventData.date,eventData.wineryid)
+        addevent(eventData.eventname,eventData.time,eventData.date,eventData.WineryId)
         //$('#eventname-input').val("");
         //$('#eventtime-input').val("");
         //$('#eventdate-input').val("");

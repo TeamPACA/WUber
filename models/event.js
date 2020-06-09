@@ -9,12 +9,12 @@ module.exports = function(sequelize, DataType){
         },
 
     time:{
-        type:DataType.DECIMAL(2,2),
+        type:DataType.STRING,
         allowNull: false,
         },
 
     date:{
-        type:DataType.DATEONLY,
+        type:DataType.STRING,
         allowNull: false,
 
         }   
@@ -22,16 +22,17 @@ module.exports = function(sequelize, DataType){
     
     });
 
+
+    Event.associate = function(models){
+        Event.hasMany(models.Booking,{
+            onDelete: "cascade"
+        });
+    };
     Event.associate = function(models){
         Event.belongsTo(models.Wineries,{
             foreignKey:{
                 allowNull: false
             }
-        });
-    };
-    Event.associate = function(models){
-        Event.hasMany(models.Booking,{
-            onDelete: "cascade"
         });
     };
  
