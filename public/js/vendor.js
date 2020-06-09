@@ -94,7 +94,7 @@ $(document).ready(function () {
         }).then(function (data) {
             data.forEach(element => {
                 getwines(element.id);
-                //getevents(element.id);
+                getevents(element.id);
                 const wineries = renderwineries(element);                
                 $('#wineries').append(wineries)       
             });
@@ -117,7 +117,12 @@ $(document).ready(function () {
 
     function getevents(id){
         $.get("/api/events/" + id,function(data){
-            console.log(data);
+            data.forEach(element =>{
+                const eventData = $('#eventsByWinery' + id) ;
+                eventData.append(`<br>${element.eventname}`)
+                eventData.append(`<br>at ${element.time} on the ${element.date}`)
+
+            })
         })
     }
 
@@ -128,13 +133,14 @@ $(document).ready(function () {
                <div class="card-header">${data.wineryname}</div>
                <div class="card-body text-dark">                    
                     <div class="row">
-                        <div class="col-4">
+                        <div class="col-4" id="eventsByWinery${data.id}">
                             <h5 class="card-title" data=${data.id}>${data.wineryname}</h5>
                             <p class="card-text">Address: ${data.wineaddress}</p>
                             <p class="card-text">Email: ${data.wineemail}</p>
                             <p class="card-text">Phone: ${data.winephone}</p>
                             <button type="submit" class="btn btn-primary wine-input mt-2" data=${data.id}>Add a wine</button>
                             <button type="submit" class="btn btn-primary winery-event mt-2" data=${data.id}>Add a calendar event</button>
+                            <h5>Upcoming Events</h5>
                         </div>
                         <div class="col-8"">
                                 <table class="table">
@@ -156,7 +162,7 @@ $(document).ready(function () {
              </div>`
         return block
     }
-    //<tbody id="winery${data.id}>
+    
 
 
    //Function for submitting a wine and calling the API. Passing in the winery id as a parameter.
