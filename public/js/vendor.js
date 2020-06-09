@@ -47,6 +47,13 @@ $(document).ready(function () {
 
     });
 
+    $(document).on('click', '.delwine', function(){
+        let x = $(this).attr("id");
+        console.log(x);
+        deletewine(x);
+
+    })
+
 
 
 
@@ -125,7 +132,11 @@ $(document).ready(function () {
             data.forEach(element =>{
                 const tablerow = $("<tr>") ;
                 tablerow.html(`
-                <td class="winetable" id=${element.id} contenteditable="false">${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>${element.price}</td>`);
+                <td class="winetable" id=${element.id} contenteditable="false">${element.winename}</td>
+                <td>${element.variety}</td>
+                <td>${element.year}</td>
+                <td>${element.price}</td>
+                <td><button class="delwine" id=${element.id}>Delete</button></td>`);
                 $('#winery' + id).append(tablerow);
             })
 
@@ -161,6 +172,7 @@ $(document).ready(function () {
                                             <th scope="col">Variety</th>
                                             <th scope="col">Year</th>
                                             <th scope="col">Price</th>
+                                            <th scope="col">Delete</th>
                                         </tr>
                                     </thead>
                                     <tbody id="winery${data.id}">
@@ -262,7 +274,7 @@ $(document).ready(function () {
     }; 
 
 
-//####### edit ###########//
+//####### Edit wines ###########//
 
     function editwine(data){
         $.ajax({
@@ -272,6 +284,18 @@ $(document).ready(function () {
         }).then(function(result){
             console.log(result)
         })
+    };
+
+//####### Delete wines ########//
+
+    function deletewine(id){
+        $.ajax({
+            method: "DELETE",
+            url: "/api/wine/" + id
+        }).then(function(result){
+            window.location.reload();
+        })
+
     }
 
 });

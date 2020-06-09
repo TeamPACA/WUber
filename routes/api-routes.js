@@ -127,6 +127,17 @@ module.exports = function (app) {
     }).catch(function(err){
       res.json(err);
     })
+  });
+
+  //Delete wine
+  app.delete("/api/wine/:id", function(req, res){
+    db.Wine.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result){
+      res.json(result)
+    })
   })
 
 
