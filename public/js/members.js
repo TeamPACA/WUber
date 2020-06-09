@@ -16,8 +16,9 @@ $(document).ready(function () {
       console.log("in get req")
     }).then(function (data) {
       console.log(data)
-      console.log("Search4 Working")
-      getwineries(wineryname)
+      console.log("Search4 Working");
+      $("#results-container").empty()
+      getwineries(wineryname);
 
     }).catch(function () {
       console.log("api fail")
@@ -39,13 +40,16 @@ $(document).ready(function () {
   function displayWineries(data) {
     let wineryCard = `
     <div class="col-md-3">
-      <div class="card">
-        <img src="./old/assets/img/LeftCard.png" class="card-img-top" alt="...">
+      <div class="card border-dark m-2">
+        <img src="./old/assets/img/grapevine.jpg" class="card-img-top" alt="Grapes on a vine">
         <div class="card-body">
           <h5 class="card-title" data=${data.id}>${data.wineryname}</h5>
-          <p class="card-text">Location: ${data.wineaddress}, ${data.winepostcode}
+          <p><strong>Location:</strong></p>
+          <p class="card-text">${data.wineaddress}, ${data.winepostcode}
           </p>
-          <button class="btn btn-primary" id="enter-winery-btn" data=${data.id}>Enter this winery!</button>
+          <p class="card-text"><strong>PH: ${data.winephone}</strong>
+          <p class="card-text">${data.wineemail}</p>
+          <button class="btn btn-primary" id="enter-winery-btn" data=${data.id}>View this winery!</button>
         </div>
       </div>
     </div>
