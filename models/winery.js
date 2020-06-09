@@ -35,13 +35,6 @@ module.exports = function(sequelize, DataType){
         }
 
     });
-    // Wineries.associate = function(models){
-    //     Wineries.belongsTo(models.User, {
-    //         foreginKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
 
     Wineries.associate = function(models){
         Wineries.hasMany(models.Event,{

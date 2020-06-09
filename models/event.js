@@ -31,8 +31,11 @@ module.exports = function(sequelize, DataType){
 
 
     Event.associate = function(models){
-        Event.hasMany(models.Booking,{
-            onDelete: "cascade"
+        Event.belongsToMany(models.User,{
+            through: 'Bookings',
+            as: 'Users',
+            foreignKey: {allowNull: false},
+            otherKey: UserID
         });
     };
 
