@@ -8,6 +8,8 @@ $(document).ready(function () {
     const wpostcode = $('#winepostcode-input');
     const wphone = $('#winephone-input');
     const wemail = $('#wineemail-input');
+   
+
 
 
 //Adding Event handlers for adding of wines,wineries and events modals.
@@ -215,18 +217,17 @@ $(document).ready(function () {
     function eventSubmit(winery){
         $('form.addevent').on('submit', function(event){
         event.preventDefault();
+        let dateFormatted = moment($('#eventdate-input').val()).format("DD/MM/YYYY")
         const eventData = {
             eventname: $('#eventname-input').val().trim(),
-            time: $('#eventtime-input').val().trim(),
-            date: $('#eventdate-input').val().trim(),
+            time: $('#eventtime-input').val(),
+            date:dateFormatted,
+            //isPast:false,
             WineryId: winery,
         }
         console.log(eventData);
-
+        //addevent(eventData.eventname,eventData.time,eventData.date,eventData.isPast,eventData.WineryId)
         addevent(eventData.eventname,eventData.time,eventData.date,eventData.WineryId)
-        //$('#eventname-input').val("");
-        //$('#eventtime-input').val("");
-        //$('#eventdate-input').val("");
 
         $('#event-modal')[0].style.display = "none";
 
