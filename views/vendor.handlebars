@@ -1,110 +1,121 @@
-<nav class="navbar navbar-default">
+<br>
+<div class="container big-c ">
+  <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/logout">
-                Logout
-            </a>
-        </div>
-    </div>
-</nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Welcome <span class="member-name"></span></h2>
-            <button type="submit" class="btn btn-primary winery-addition">Add Winery</button>
-        </div>
-        
-    </div>
-    <!--Adding HTML here for modal content  -->
-    <div id="wine-modal">
-      <div class="modal-content p-4">
-        <h2>Add your wine</h2>
-        <form class="addwine">
-          <div class="form-group">
-            <label for="exampleInputWine">Wine name</label>
-            <input type="winename" class="form-control" id="winename-input" placeholder="Wine name">
-          </div>          
-          <div class="form-group">
-            <label for="exampleInputVariety">Variety</label>
-            <input type="winevariety" class="form-control" id="winevariety-input" placeholder="Variety">
-          </div>
-          <div class="form-group">
-            <label for="exampleYear">Year</label>
-            <input type="wineyear" class="form-control" id="wineyear-input" placeholder="Year">
-          </div>
-          <div class="form-group">
-            <label for="exampleDescription">Description</label>
-            <input type="winedescription" class="form-control" id="winedescription-input" placeholder="Description">
-          </div>
-          <div class="form-group">
-            <label for="exampleInputPrice">Price</label>
-            <input type="wineprice" class="form-control" id="wineprice-input" placeholder="Price">
-          </div>
-          <button type="submit" class="btn btn-primary addwine">Add Wine</button>  
-          <button type="submit" class="btn btn-primary">Go Back</button>                  
-        </form>
-      </div>
-        
-    </div>
-
-    <div id="event-modal">
-      <div class="modal-content p-4">
-        <h1>Add your calendar event</h1>
-        <form class="addevent">
-          <div class="form-group">
-            <label for="exampleInputEvent">Event name</label>
-            <input type="eventname" class="form-control" id="eventname-input" placeholder="Event name">
-          </div>
-          <div class="form-group">
-            <label for="exampleEventTime">Time</label>
-            <input type="eventtime" class="form-control" id="eventtime-input" placeholder="Time">
-          </div>
-          <div class="form-group">
-            <label for="exampleEventDate">Date</label>
-            <input type="eventdate" class="form-control" id="eventdate-input" placeholder="Date">
-          </div>
-          <button type="submit" class="btn btn-primary">Add Event</button>
-          <button type="submit" class="btn btn-primary">Go Back</button> 
-        </form>
+      <div class="navbar-header">
+        <a class="btn btn-primary login" href="/logout">
+          Logout
+        </a>
       </div>
     </div>
-
-
-    <div id="winery-modal">
-        <div class="modal-content p-4">
-            <form class="addwinery">
-                <div class="form-group">
-                    <label for="exampleInputWinery">Winery name</label>
-                    <input type="wineryname" class="form-control" id="wineryname-input" placeholder="Winery name">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputWineryAddress">Address</label>
-                    <input type="wineaddress" class="form-control" id="wineaddress-input" placeholder="Address">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInpupostcode">Postcode</label>
-                    <input type="winepostcode" class="form-control" id="winepostcode-input" placeholder="Postcode">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPhone">Phone</label>
-                    <input type="winephone" class="form-control" id="winephone-input" placeholder="Phone">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail">Email</label>
-                    <input type="wineemail" class="form-control" id="wineemail-input" placeholder="Email">
-                </div>
-                <button type="submit" class="btn btn-primary">Add Winery</button>
-                <button type="submit" class="btn btn-primary" id="reload-page">Go Back</button>
-            </form>
-        </div>
-    </div>
+  </nav>
+  <div class="container">
     <div class="row">
-        <div class="col-sm">
-            <div class="container">
-                <h1>Wineries</h1>
-                <div id="wineries"></div>
-        </div>
+      <div class="col-md-4"></div>
+      <center>
+        <h2>Welcome <span class="member-name"></span></h2>
+      </center>
+      <div class="col-md-4"></div>
+      <button type="submit" class="btn btn-primary winery-addition" id="member">Add Winery</button>
+      <br>
+      <div class="col-md-4"></div>
     </div>
+  </div>
+</div>
 
+<!--Adding HTML here for modal content  -->
+<div id="wine-modal">
+  <div class="modal-content p-4">
+    <h2>Add your wine</h2>
+    <form class="addwine">
+      <div class="form-group">
+        <label for="exampleInputWine">Wine name</label>
+        <input type="winename" class="form-control" id="winename-input" placeholder="Wine name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputVariety">Variety</label>
+        <input type="winevariety" class="form-control" id="winevariety-input" placeholder="Variety">
+      </div>
+      <div class="form-group">
+        <label for="exampleYear">Year</label>
+        <input type="wineyear" class="form-control" id="wineyear-input" placeholder="Year">
+      </div>
+      <div class="form-group">
+        <label for="exampleDescription">Description</label>
+        <input type="winedescription" class="form-control" id="winedescription-input" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPrice">Price</label>
+        <input type="wineprice" class="form-control" id="wineprice-input" placeholder="Price">
+      </div>
+      <button type="submit" class="btn btn-primary addwine">Add Wine</button>
+      <button type="submit" class="btn btn-primary">Go Back</button>
+    </form>
+  </div>
+
+</div>
+
+
+<div id="event-modal">
+  <div class="modal-content p-4">
+    <h1>Add your calendar event</h1>
+    <form class="addevent">
+      <div class="form-group">
+        <label for="exampleInputEvent">Event name</label>
+        <input type="eventname" class="form-control" id="eventname-input" placeholder="Event name">
+
+      </div>
+      <div class="form-group">
+        <label for="exampleEventTime">Time</label>
+        <input type="eventtime" class="form-control" id="eventtime-input" placeholder="Time">
+      </div>
+      <div class="form-group">
+        <label for="exampleEventDate">Date</label>
+        <input type="eventdate" class="form-control" id="eventdate-input" placeholder="Date">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Event</button>
+      <button type="submit" class="btn btn-primary">Go Back</button>
+    </form>
+  </div>
+</div>
+
+
+<div id="winery-modal">
+  <div class="modal-content p-4">
+    <form class="addwinery">
+      <div class="form-group">
+        <label for="exampleInputWinery">Winery name</label>
+        <input type="wineryname" class="form-control" id="wineryname-input" placeholder="Winery name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputWineryAddress">Address</label>
+        <input type="wineaddress" class="form-control" id="wineaddress-input" placeholder="Address">
+      </div>
+      <div class="form-group">
+        <label for="exampleInpupostcode">Postcode</label>
+        <input type="winepostcode" class="form-control" id="winepostcode-input" placeholder="Postcode">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPhone">Phone</label>
+        <input type="winephone" class="form-control" id="winephone-input" placeholder="Phone">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail">Email</label>
+        <input type="wineemail" class="form-control" id="wineemail-input" placeholder="Email">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Winery</button>
+      <button type="submit" class="btn btn-primary" id="reload-page">Go Back</button>
+    </form>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm">
+    <div class="container">
+      <h1>Wineries</h1>
+      <div id="wineries"></div>
     </div>
+  </div>
+
+</div>
+</div>
 </div>
