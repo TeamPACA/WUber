@@ -1,12 +1,13 @@
-module.exports = function(sequelize, DataType){
-    const Event = sequelize.define("Event",{
-    eventname:{
-        type:DataType.STRING,
-        allowNull: false,
-        validate: {
-            len: [3,20]
+module.exports = function (sequelize, DataType) {
+    const Event = sequelize.define("Event", {
+        eventname: {
+            type: DataType.STRING,
+            allowNull: false,
+            validate: {
+                len: [3, 20]
             }
         },
+
 
     time:{
         type:DataType.STRING,
@@ -46,6 +47,7 @@ module.exports = function(sequelize, DataType){
             }
         });
     };
+
  
     
 
