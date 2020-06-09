@@ -62,7 +62,7 @@ module.exports = function (app) {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
       res.json({
-        email: req.user.email,
+        user: req.user.user,
         id: req.user.id
       });
     }
@@ -84,6 +84,16 @@ module.exports = function (app) {
   //GET route for retrieving all wines from the database.
   app.get("/api/wines/", function (req, res) {
     db.Wine.findAll({}).then(function (result) {
+      res.json(result)
+    })
+  })
+
+  app.get("/api/winesdata/:id", function(req,res){
+    db.Wine.findAll({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(result){
       res.json(result)
     })
   })
@@ -115,13 +125,17 @@ module.exports = function (app) {
   });
 
   //Edit wine name
-  app.put("/api/wine", function(req,res){
+  app.put("/api/wine/:id", function(req,res){
     
     db.Wine.update({
       winename: req.body.name,
+      variety: req.body.variety,
+      year: req.body.year,
+      description: req.body.description,
+      price: req.body.price,
     },{
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(result){
       res.json(result);

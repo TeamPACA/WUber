@@ -5,8 +5,6 @@
     height: 70%;
     padding-bottom: 2%;
     padding-top: 2%;
-  
-   
    
 }
 
@@ -114,13 +112,14 @@ body
 }
 
 @media screen and (min-width: 601px) {
-  .card-header {
+  .card-header, #welcomeuser {
     font-size: 50px;
   }
 }
 
 @media screen and (max-width: 600px) {
-  .card-header {
+  .card-header, #welcomeuser {
     font-size: 30px;
   }
 }
+

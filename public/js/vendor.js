@@ -12,7 +12,15 @@ $(document).ready(function () {
 //Adding Event handlers for adding of wines,wineries and events modals.
     $('body').on('click','.wine-input',function(){
         let wineryID = ($(this).attr("data"));
-        $('#wine-modal')[0].style.display = "block";
+        // $('#wine-modal')[0].style.display = "block";
+        $('#winemodalheader').text("Add Wine");
+        $('#winemodalbtn').text("Add Wine");
+        // document.getElementById('winemodal').classList.remove('editwine')
+        // document.getElementById('winemodal').classList.add('addwine')
+        $("#editmodal").modal('show');
+        $('#addwinemodalbtn').show();
+        $('#editwinemodalbtn').hide();
+
         wineSubmit(wineryID);
     });
 
@@ -29,26 +37,91 @@ $(document).ready(function () {
         location.reload();        
     });
 
+    $('#editmodal').on('hidden.bs.modal', function () {
+        $(this).find('form').trigger('reset'); 
+    })
+
     //###### Editing & Deleting Wine ############//
-    $(document).on('click','.winetable',function(){
-        $(this).attr('contenteditable', 'true');
-        $(this).css('background-color', "white");
+
+    // This only change name
+    // $(document).on('click','.winetable',function(event){
+    //     $(this).attr('contenteditable', 'true');
+    //     $(this).css('background-color', "white");
+    //     let x = $(this).attr("id")
+    //     console.log(x)
+    //     getwinesdata(x);
+    // });
+    // This only change name
+
+    // This work with code above to lauch ajax call
+//     $(document).on('blur','.winetable',function(){
+//         let newtext = $(this).text();
+//         let id = $(this).attr("id");
+//         console.log(newtext, id)
+//         const wineedit = {
+//             name: newtext,
+//             id: id
+//         };
+//         editwine(wineedit);
+//         $(this).css('background-color', "#dfd4d4")
+
+//     });
+// This work with code above to lauch ajax call
 
 
-    });
 
-    $(document).on('blur','.winetable',function(){
-        let newtext = $(this).text();
-        let id = $(this).attr("id");
-        console.log(newtext, id)
-        const wineedit = {
-            name: newtext,
-            id: id
-        };
-        editwine(wineedit);
-        $(this).css('background-color', "#dfd4d4")
+    $('body').on('click', '#editwine', function(){
+        let x = $(this).attr("data")
+        getwinesdata(x);
 
-    });
+        SubmitEditWine(x);
+    })
+
+    function getwinesdata(id){
+        $.get("/api/winesdata/" + id,function(data){
+            console.log(data)
+            modal_wine_edit(data);
+            $('#editmodal').modal("show");
+            $('#addwinemodalbtn').hide();
+            $('#editwinemodalbtn').show();
+            
+        })
+    };
+
+    function modal_wine_edit(data){
+        $('#winename-input').val(`${data[0].winename}`);
+        $('#winevariety-input').val(`${data[0].variety}`);
+        $('#wineyear-input').val(`${data[0].year}`);
+        $('#winedescription-input').val(`${data[0].description}`);
+        $('#wineprice-input').val(`${data[0].price}`);
+        $('#winemodalheader').text("Edit Wine");
+        $('#winemodalbtn').text("Edit Wine");
+
+    };
+
+
+    function SubmitEditWine(id){
+
+        $('body').on('click','#editwinemodalbtn', function(){
+            
+            const editwineData = {
+                name: $('#winename-input').val().trim(),
+                variety: $('#winevariety-input').val().trim(),
+                year: $('#wineyear-input').val().trim(),
+                description: $('#winedescription-input').val().trim(),
+                price: $('#wineprice-input').val().trim(),
+            };
+    
+            console.log(editwineData, id);
+            
+            editwine(editwineData,id);
+    
+            $('#editmodal').modal("hide");
+            window.location.reload();
+        });
+
+    }
+    
 
     $(document).on('click', '.delwine', function(){
         let x = $(this).attr("id");
@@ -56,6 +129,8 @@ $(document).ready(function () {
         deletewine(x);
 
     })
+
+    //###### Editing & Deleting Wine ############//    
 
     //###### Editing & Deleting Event ############//
 
@@ -69,7 +144,7 @@ $(document).ready(function () {
 
 
     $.get("/api/user_data").then(function (data) {
-        $(".member-name").text(data.email);
+        $(".member-name").text(data.user);
         $('.memberid').text(data.id);
         memberid = data.id
 
@@ -140,13 +215,18 @@ $(document).ready(function () {
         $.get("/api/wines/" + id,function(data){
 
             data.forEach(element =>{
-                const tablerow = $("<tr>") ;
+                const tablerow = $("<tr class='winerow'>") ;
                 tablerow.html(`
                 <td class="winetable" id=${element.id} contenteditable="false">${element.winename}</td>
                 <td>${element.variety}</td>
                 <td>${element.year}</td>
                 <td>${element.price}</td>
-                <td><button class="delwine" id=${element.id}>Delete</button></td>`);
+                <td>
+                <span>
+                <button class="editwine" id="editwine" data=${element.id}>Edit</button>
+                <button class="delwine" id=${element.id}>Delete</button>
+                </span>
+                </td>`);
                 $('#winery' + id).append(tablerow);
             })
 
@@ -194,7 +274,7 @@ $(document).ready(function () {
                                 <th scope="col">Variety</th>
                                 <th scope="col">Year</th>
                                 <th scope="col">Price</th>
-                                <th scope="col">Delete</th>
+                                <th scope="col">Options</th>
                             </tr>
                         </thead>
                         <tbody id="winery${data.id}">
@@ -244,12 +324,13 @@ $(document).ready(function () {
         
         addwine(wineData.winename,wineData.winevariety,wineData.wineyear,wineData.winedescription,wineData.wineprice,wineData.wineryid);
         //Clear out the contents and drop the modal. May not be necessary to do this as there is a page reload.
-        $('#winename-input').val("");
-        $('#winevariety-input').val("");
-        $('#wineyear-input').val("");
-        $('#winedescription-input').val("");
-        $('#wineprice-input').val("");
-        $('#wine-modal')[0].style.display = "none";
+        // $('#winename-input').val("");
+        // $('#winevariety-input').val("");
+        // $('#wineyear-input').val("");
+        // $('#winedescription-input').val("");
+        // $('#wineprice-input').val("");
+        // $('#wine-modal')[0].style.display = "none";
+        $('#editmodal').modal("hide");
 
     })
 }
@@ -315,13 +396,15 @@ $(document).ready(function () {
 
 //####### Edit wines ###########//
 
-    function editwine(data){
+    function editwine(data, id){
         $.ajax({
             method: "PUT",
-            url:"/api/wine",
+            url:"/api/wine/" + id,
             data: data
         }).then(function(result){
             console.log(result)
+        }).catch(function(err){
+            console.log(err)
         })
     };
 
