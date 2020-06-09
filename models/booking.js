@@ -5,13 +5,7 @@ module.exports = function(sequelize, DataType){
     
     });
 
-    Booking.associate = function(models){
-        Booking.belongsTo(models.Event,{
-            foreignKey:{
-                allowNull: false
-            }
-        });
-    };
+
     
     Booking.associate = function(models){
         Booking.belongsTo(models.User,{
@@ -19,7 +13,13 @@ module.exports = function(sequelize, DataType){
                 allowNull: false
             }
         });
-    };    
+   
+        Booking.belongsTo(models.Event,{
+            foreignKey:{
+                allowNull: false
+            }
+        });
+    };
 
     return Booking
 };
