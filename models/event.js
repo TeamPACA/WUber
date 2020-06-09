@@ -17,7 +17,14 @@ module.exports = function(sequelize, DataType){
         type:DataType.STRING,
         allowNull: false,
 
-        }   
+        }
+        ,
+
+    isPast:{
+        type:DataType.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+    }
     
     
     });
@@ -28,6 +35,7 @@ module.exports = function(sequelize, DataType){
             onDelete: "cascade"
         });
     };
+
     Event.associate = function(models){
         Event.belongsTo(models.Wineries,{
             foreignKey:{
