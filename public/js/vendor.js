@@ -10,24 +10,24 @@ $(document).ready(function () {
     const wemail = $('#wineemail-input');
 
 
-//Adding Event handlers for adding of wines,wineries and events modals.
-    $('body').on('click','.wine-input',function(){
+    //Adding Event handlers for adding of wines,wineries and events modals.
+    $('body').on('click', '.wine-input', function () {
         let wineryID = ($(this).attr("data"));
         $('#wine-modal')[0].style.display = "block";
         wineSubmit(wineryID);
     });
 
-    $('body').on('click','.winery-event',function(){
+    $('body').on('click', '.winery-event', function () {
         let wineryID = ($(this).attr("data"));
         $('#event-modal')[0].style.display = "block";
         eventSubmit(wineryID);
     });
 
-    $('body').on('click','.winery-addition',function(){
-        $('#winery-modal')[0].style.display = "block";        
+    $('body').on('click', '.winery-addition', function () {
+        $('#winery-modal')[0].style.display = "block";
     });
-    $('body').on('click','#reload-page',function(){
-        location.reload();        
+    $('body').on('click', '#reload-page', function () {
+        location.reload();
     });
 
 
@@ -95,19 +95,19 @@ $(document).ready(function () {
             data.forEach(element => {
                 getwines(element.id);
                 getevents(element.id);
-                const wineries = renderwineries(element);                
-                $('#wineries').append(wineries)       
+                const wineries = renderwineries(element);
+                $('#wineries').append(wineries)
             });
         })
     };
 
     //Function to get all wines from the database for each winery under the user account.
     //Render all of the wines to the winery card.
-    function getwines(id){
-        $.get("/api/wines/" + id,function(data){
+    function getwines(id) {
+        $.get("/api/wines/" + id, function (data) {
 
-            data.forEach(element =>{
-                const tablerow = $("<tr>") ;
+            data.forEach(element => {
+                const tablerow = $("<tr>");
                 tablerow.html(`<td>${element.winename}</td><td>${element.variety}</td><td>${element.year}</td><td>$${element.price}</td>`);
                 $('#winery' + id).append(tablerow);
             })
@@ -115,10 +115,10 @@ $(document).ready(function () {
         })
     }
 
-    function getevents(id){
-        $.get("/api/events/" + id,function(data){
-            data.forEach(element =>{
-                const eventData = $('#eventsByWinery' + id) ;
+    function getevents(id) {
+        $.get("/api/events/" + id, function (data) {
+            data.forEach(element => {
+                const eventData = $('#eventsByWinery' + id);
                 eventData.append(`<br>${element.eventname}`)
                 eventData.append(`<br>at ${element.time} on the ${element.date}`)
 
@@ -162,93 +162,93 @@ $(document).ready(function () {
              </div>`
         return block
     }
-    
 
 
-   //Function for submitting a wine and calling the API. Passing in the winery id as a parameter.
-   function wineSubmit(winery){
-    $('form.addwine').on('submit', function(event){
-        event.preventDefault();
-        const wineData = {
-            winename: $('#winename-input').val().trim(),
-            winevariety: $('#winevariety-input').val().trim(),
-            wineyear: $('#wineyear-input').val().trim(),
-            winedescription: $('#winedescription-input').val().trim(),
-            wineprice: $('#wineprice-input').val().trim(),
-            wineryid: winery,
-        }
 
-        console.log(wineData);
-        
-        addwine(wineData.winename,wineData.winevariety,wineData.wineyear,wineData.winedescription,wineData.wineprice,wineData.wineryid);
-        //Clear out the contents and drop the modal. May not be necessary to do this as there is a page reload.
-        $('#winename-input').val("");
-        $('#winevariety-input').val("");
-        $('#wineyear-input').val("");
-        $('#winedescription-input').val("");
-        $('#wineprice-input').val("");
-        $('#wine-modal')[0].style.display = "none";
+    //Function for submitting a wine and calling the API. Passing in the winery id as a parameter.
+    function wineSubmit(winery) {
+        $('form.addwine').on('submit', function (event) {
+            event.preventDefault();
+            const wineData = {
+                winename: $('#winename-input').val().trim(),
+                winevariety: $('#winevariety-input').val().trim(),
+                wineyear: $('#wineyear-input').val().trim(),
+                winedescription: $('#winedescription-input').val().trim(),
+                wineprice: $('#wineprice-input').val().trim(),
+                wineryid: winery,
+            }
 
-    })
-}
+            console.log(wineData);
+
+            addwine(wineData.winename, wineData.winevariety, wineData.wineyear, wineData.winedescription, wineData.wineprice, wineData.wineryid);
+            //Clear out the contents and drop the modal. May not be necessary to do this as there is a page reload.
+            $('#winename-input').val("");
+            $('#winevariety-input').val("");
+            $('#wineyear-input').val("");
+            $('#winedescription-input').val("");
+            $('#wineprice-input').val("");
+            $('#wine-modal')[0].style.display = "none";
+
+        })
+    }
 
     //function to post wine to the database via /api/addwine route
-    
-    function addwine(name,variety,year,description,price,id){
+
+    function addwine(name, variety, year, description, price, id) {
         console.log("Wine Submitted");
         $.post("/api/addwine/", {
-            winename:name,
-            variety:variety,
-            year:year,
+            winename: name,
+            variety: variety,
+            year: year,
             description: description,
             price: price,
             WineryId: id,
-        }).then(function(data){
+        }).then(function (data) {
             console.log(data)
             window.location.reload();
-        }).catch(function(){
+        }).catch(function () {
             console.log("API failure")
         });
     };
-    
-
-    function eventSubmit(winery){
-        $('form.addevent').on('submit', function(event){
-        event.preventDefault();
-        const eventData = {
-            eventname: $('#eventname-input').val().trim(),
-            time: $('#eventtime-input').val().trim(),
-            date: $('#eventdate-input').val().trim(),
-            wineryid: winery,
-        }
-        console.log(eventData);
-
-        addevent(eventData.eventname,eventData.time,eventData.date,eventData.wineryid)
-        //$('#eventname-input').val("");
-        //$('#eventtime-input').val("");
-        //$('#eventdate-input').val("");
-
-        $('#event-modal')[0].style.display = "none";
-
-        }) 
-    }       
 
 
+    function eventSubmit(winery) {
+        $('form.addevent').on('submit', function (event) {
+            event.preventDefault();
+            const eventData = {
+                eventname: $('#eventname-input').val().trim(),
+                time: $('#eventtime-input').val().trim(),
+                date: $('#eventdate-input').val().trim(),
+                wineryid: winery,
+            }
+            console.log(eventData);
 
-    function addevent(name,time,date,id){
+            addevent(eventData.eventname, eventData.time, eventData.date, eventData.wineryid)
+            //$('#eventname-input').val("");
+            //$('#eventtime-input').val("");
+            //$('#eventdate-input').val("");
+
+            $('#event-modal')[0].style.display = "none";
+
+        })
+    }
+
+
+
+    function addevent(name, time, date, id) {
         console.log("Event Submitted");
-            $.post("/api/addEvent/", {
-            eventname:name,
-            time:time,
-            date:date,
+        $.post("/api/addEvent/", {
+            eventname: name,
+            time: time,
+            date: date,
             WineryId: id,
-        }).then(function(data){
+        }).then(function (data) {
             console.log(data)
             window.location.reload();
-        }).catch(function(){
+        }).catch(function () {
             console.log("API failure")
         });
-    }; 
-    
+    };
+
 
 });

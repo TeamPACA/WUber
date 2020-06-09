@@ -157,7 +157,6 @@ module.exports = function (app) {
 
 
 
-
   // CLIENT SIDE LOGIC
   app.get("/api/wineries_name/:wineryname", function (req, res) {
     console.log("in api route" + req.params.wineryname)
@@ -181,6 +180,17 @@ module.exports = function (app) {
       type: sequelize.QueryTypes.SELECT
     }).then(function (result) {
       res.json(result)
+    })
+  })
+
+  app.get("/api/winery_page/:id", function (req, res) {
+    db.Wineries.findAll({
+      where: {
+        WineryId: req.params.id
+      }
+    }).then(function (result) {
+      res.json(result)
+      console.log(result)
     })
   })
 
