@@ -146,6 +146,8 @@ module.exports = function (app) {
   //**************************************************************** */
   //   Booking API routes
   //**************************************************************** */
+
+  //POST route for bookings.
   app.post("/api/createBooking", function (req, res) {
 
     db.Booking.create(req.body).then(function (result) {
@@ -154,6 +156,24 @@ module.exports = function (app) {
       res.status(401).json(err);
     });
   });
+
+  //GET route for bookings.
+  app.get("/api/bookings/", function (req, res) {
+    db.Booking.findAll({}).then(function (result) {
+      res.json(result)
+    })
+  });
+
+  //GET route for bookings by eventID.
+  app.get("/api/bookings/:id", function (req, res) {
+    db.Booking.findAll({
+      where: {
+        EventId: req.params.id
+      }
+    }).then(function (result) {
+      res.json(result)
+    })
+  })
 
 
 
