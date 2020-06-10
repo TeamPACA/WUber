@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "Killer88",
-    "database": "Platform",
+    "password": "1234",
+    "database": "wuber",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },

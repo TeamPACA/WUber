@@ -1,32 +1,24 @@
-<br>
+
 <div class="container big-c ">
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="btn btn-primary login" href="/logout">
-          Logout
-        </a>
+        
+        {{!-- <button class="btn btn-primary winery-addition" id="member">Add Winery</button> --}}
       </div>
     </div>
   </nav>
   <div class="container">
-    <div class="row">
-      <div class="col-md-4"></div>
-      <center>
-        <h2>Welcome <span class="member-name"></span></h2>
-      </center>
-      <div class="col-md-4"></div>
-      <button type="submit" class="btn btn-primary winery-addition" id="member">Add Winery</button>
-      <br>
-      <div class="col-md-4"></div>
+    <div class="row d-flex justify-content-center">
+        <h2 id="welcomeuser">Welcome <span class="member-name"></span></h2>
     </div>
   </div>
 </div>
 
 <!--Adding HTML here for modal content  -->
-<div id="wine-modal">
+{{!-- <div id="wine-modal">
   <div class="modal-content p-4">
-    <h2>Add your wine</h2>
+    <h2 id="winemodalheader">Add your wine</h2>
     <form class="addwine">
       <div class="form-group">
         <label for="exampleInputWine">Wine name</label>
@@ -48,12 +40,12 @@
         <label for="exampleInputPrice">Price</label>
         <input type="wineprice" class="form-control" id="wineprice-input" placeholder="Price">
       </div>
-      <button type="submit" class="btn btn-primary addwine">Add Wine</button>
+      <button type="submit" class="btn btn-primary addwine" id="winemodalbtn">Add Wine</button>
       <button type="submit" class="btn btn-primary">Go Back</button>
     </form>
   </div>
 
-</div>
+</div> --}}
 
 
 <div id="event-modal">
@@ -111,6 +103,15 @@
 <div class="row">
   <div class="col-sm">
     <div class="container">
+      <div class="row my-3">
+        <div class="col-6">
+          <button class="btn btn-primary winery-addition" id="member">Add Winery</button>
+        </div>
+        <div class="col-6 d-flex">
+          <a class="btn btn-outline-dark ml-auto px-3" style="font-weight: bolder;" href="/logout">Logout</a>
+        </div>
+        
+      </div>
       <h1>Wineries</h1>
       <div id="wineries"></div>
     </div>
@@ -119,3 +120,54 @@
 </div>
 </div>
 </div>
+
+
+{{!-- New Modal --}}
+
+      <!-- The Modal -->
+      <div class="modal fade" id="editmodal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+          
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title" id="winemodalheader">Add Wine</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <!-- Modal body -->
+            <div class="modal-body">
+      <form class="addwine" id="winemodal">
+      <div class="form-group">
+        <label for="exampleInputWine">Wine name</label>
+        <input type="winename" class="form-control" id="winename-input" placeholder="Wine name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputVariety">Variety</label>
+        <input type="winevariety" class="form-control" id="winevariety-input" placeholder="Variety">
+      </div>
+      <div class="form-group">
+        <label for="exampleYear">Year</label>
+        <input type="wineyear" class="form-control" id="wineyear-input" placeholder="Year">
+      </div>
+      <div class="form-group">
+        <label for="exampleDescription">Description</label>
+        <input type="winedescription" class="form-control" id="winedescription-input" placeholder="Description">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPrice">Price</label>
+        <input type="wineprice" class="form-control" id="wineprice-input" placeholder="Price">
+      </div>
+      <button type="submit" class="btn btn-primary" id="addwinemodalbtn">Add Wine</button>
+      </form>
+            </div>
+            
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button class="btn btn-primary" id="editwinemodalbtn">Edit Wine</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+            
+          </div>
+        </div>
+      </div>
