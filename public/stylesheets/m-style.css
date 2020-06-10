@@ -32,7 +32,13 @@
     opacity: 80%;
 }
 
+.card-imgw{
 
+  height: 180px;
+  display:block;
+  margin:auto;
+
+}
 
 
 #footer{
