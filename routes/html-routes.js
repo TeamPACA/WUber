@@ -35,16 +35,23 @@ module.exports = function (app) {
 
 
   app.get("/winerypage/:id", isAuthenticated, function (req, res) {
-    db.Wineries.findAll({
+    db.Wineries.findOne({
       where: {
         id: req.params.id
-      }
+      },
+      include: [db.Wine, db.Event]
+
     }).then(function (wineryData) {
-      console.log(wineryData)
+      console.log(wineryData.get())
+      results = wineryData.get()
+      results.Wines = results.Wines.map((wine) => wine.get())
+      results.Events = results.Events.map((event) => event.get())
       res.render("winerypage", {
-        data: wineryData
+        data: results
       })
+      console.log(results)
     })
   })
+
 
 };

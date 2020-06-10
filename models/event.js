@@ -9,47 +9,45 @@ module.exports = function (sequelize, DataType) {
         },
 
 
-    time:{
-        type:DataType.STRING,
-        allowNull: false,
+        time: {
+            type: DataType.STRING,
+            allowNull: false,
         },
 
-    date:{
-        type:DataType.STRING,
-        allowNull: false,
+        date: {
+            type: DataType.STRING,
+            allowNull: false,
 
+        },
+
+        isPast: {
+            type: DataType.BOOLEAN,
+            defaultValue: false,
+            allowNull: false,
         }
-        ,
 
-    isPast:{
-        type:DataType.BOOLEAN,
-        defaultValue: false,
-        allowNull: false,
-    }
-    
-    
+
     });
 
 
-    Event.associate = function(models){
-        Event.belongsToMany(models.User,{
-            through: 'Bookings',
-            as: 'Users',
-            foreignKey: {allowNull: false},
-            otherKey: UserID
-        });
+    Event.associate = function (models) {
+        Event.belongsToMany(models.User, {
+                through: 'Bookings',
+                as: 'Users',
+                foreignKey: {
+                    allowNull: false
+                },
+                otherKey: "UserID"
+            }),
+            Event.belongsTo(models.Wineries, {
+                foreignKey: {
+                    allowNull: false
+                }
+            });
     };
 
-    Event.associate = function(models){
-        Event.belongsTo(models.Wineries,{
-            foreignKey:{
-                allowNull: false
-            }
-        });
-    };
 
- 
-    
+
 
     return Event
 };
