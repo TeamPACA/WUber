@@ -33,6 +33,7 @@ module.exports = function (app) {
     res.render("vendor")
   });
 
+
   app.get("/winerypage/:id", isAuthenticated, function (req, res) {
     db.Wineries.findAll({
       where: {
@@ -45,4 +46,5 @@ module.exports = function (app) {
       })
     })
   })
+
 };
