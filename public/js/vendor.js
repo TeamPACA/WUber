@@ -12,7 +12,7 @@ $(document).ready(function () {
 
 //Adding Event handlers for adding of wines,wineries and events modals.
     $('body').on('click','.wine-input',function(){
-        let wineryID = ($(this).attr("data"));
+        let wineryID = ($(this).attr("data")); 
         $('#wine-modal')[0].style.display = "block";
         wineSubmit(wineryID);
     });
@@ -27,7 +27,7 @@ $(document).ready(function () {
         $('#winery-modal')[0].style.display = "block";        
     });
     $('body').on('click','#reload-page',function(){
-        location.reload();        
+        location.reload();       
     });
 
 

@@ -32,4 +32,9 @@ module.exports = function (app) {
     res.render("vendor")
   });
 
+
+  app.get("/winerypage", isAuthenticated, function (req, res) {
+    res.render("winerypage")
+  });
+
 };
