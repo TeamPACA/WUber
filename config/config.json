@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "Killer88",
+    "password": null,
     "database": "platform",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,9 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "wdia0aijrq6a5nic",
+    "password": "t2dnkktlkxy4ikln",
+    "database": "cn66hv718ubnynlz",
     "host": "axxb6a0z2kydkco3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "use_env_variable": "JAWSDB_URL"
