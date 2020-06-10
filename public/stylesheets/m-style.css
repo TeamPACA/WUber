@@ -1,112 +1,125 @@
-#w-nav
-{
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(102,51,51,1) 57%);
-    height: 70%;
-    padding-bottom: 2%;
-    padding-top: 2%;
-  
+#w-nav {
+  background: rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(102, 51, 51, 1) 57%);
+  height: 70%;
+  padding-bottom: 2%;
+  padding-top: 2%;
+
 }
 
 
 .jumbotron-fluid {
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-style: unset;
-    opacity: 50%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-style: unset;
+  opacity: 50%;
 
 }
 
-.navbar-header , #member {
+.navbar-header,
+#member {
   margin: 0px auto;
 }
 
 
-.btn-primary{
+.btn-primary {
 
-    background-color: black;
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    opacity: 80%;
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  opacity: 80%;
 }
 
-.card-imgw{
+.card-imgw {
 
   height: 180px;
-  display:block;
-  margin:auto;
+  display: block;
+  margin: auto;
 
 }
 
 
-#footer{
-    color: black;
-    text-align: center;
-    text-size-adjust: 50%;
+#footer {
+  color: black;
+  text-align: center;
+  text-size-adjust: 50%;
 }
 
 
 
-.login, .signup{
-    justify-content: center;
-   padding: 10px;
-    text-align: center;
-    font-weight: bold;
-    opacity: 80%;
-    
+.login,
+.signup {
+  justify-content: center;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  opacity: 80%;
+
 }
 
-#paca{
-    width: 10%;
-    height: 10%;
+#paca {
+  width: 10%;
+  height: 10%;
 }
 
 form.signup,
 form.login {
   margin-top: 50px;
 }
+
 #wine-modal {
-  display:none;
+  display: none;
   position: fixed;
-  top:10%;
-  left:25%;
-  width:50%;
+  top: 10%;
+  left: 25%;
+  width: 50%;
   z-index: 1;
   overflow: auto;
 }
 
-#event-modal{
-  display:none;
+#event-modal {
+  display: none;
   position: fixed;
-  top:10%;
-  left:25%;
-  width:50%;
+  top: 10%;
+  left: 25%;
+  width: 50%;
   z-index: 1;
   overflow: auto;
 }
-#winery-modal{
-    display:none;
-    position: fixed;
-    top:10%;
-    left:25%;
-    width:50%;
-    z-index: 1;
-    overflow: auto;
-  }
-.card-body{
-  background-color:#dfd4d4 ;
+
+#winery-modal {
+  display: none;
+  position: fixed;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+  z-index: 1;
+  overflow: auto;
+}
+
+.card-body {
+  background-color: #dfd4d4;
 }
 
 
 
-body
-{ 
-    background-image: url("../old/assets/img/grape-BW-background-T.png"); 
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center 200px;
-    background-color: whitesmoke;
-    font-family:century;
+body {
+  background-image: url("../old/assets/img/grape-BW-background-T.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center 200px;
+  background-color: whitesmoke;
+
+  font-family: century;
+}
+
+.TitleStyle {
+  color: black;
+  text-align: center;
+  background: linear-gradient();
+  border-radius: 8px;
+  padding: 0.3rem;
+  box-shadow: 0px 0px 2px 2px grey;
 }
