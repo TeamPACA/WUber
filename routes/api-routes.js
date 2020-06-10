@@ -118,8 +118,10 @@ module.exports = function (app) {
 
     console.log(req.body)
     db.Wine.create(req.body).then(function (result) {
+      console.log(result)
       res.json(result);
     }).catch(function (err) {
+      console.log(err)
       res.status(401).json(err);
     });
   });
@@ -200,6 +202,8 @@ module.exports = function (app) {
   //**************************************************************** */
   //   Booking API routes
   //**************************************************************** */
+
+  //POST route for bookings.
   app.post("/api/createBooking", function (req, res) {
 
     db.Booking.create(req.body).then(function (result) {
@@ -209,6 +213,23 @@ module.exports = function (app) {
     });
   });
 
+  //GET route for bookings.
+  app.get("/api/bookings/", function (req, res) {
+    db.Booking.findAll({}).then(function (result) {
+      res.json(result)
+    })
+  });
+
+  //GET route for bookings by eventID.
+  app.get("/api/bookings/:id", function (req, res) {
+    db.Booking.findAll({
+      where: {
+        EventId: req.params.id
+      }
+    }).then(function (result) {
+      res.json(result)
+    })
+  })
 
 
 
@@ -235,6 +256,17 @@ module.exports = function (app) {
       type: sequelize.QueryTypes.SELECT
     }).then(function (result) {
       res.json(result)
+    })
+  })
+
+  app.get("/api/winery_page/:id", function (req, res) {
+    db.Wineries.findAll({
+      where: {
+        WineryId: req.params.id
+      }
+    }).then(function (result) {
+      res.json(result)
+      console.log(result)
     })
   })
 

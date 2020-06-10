@@ -144,7 +144,7 @@ $(document).ready(function () {
 
 
     $.get("/api/user_data").then(function (data) {
-        $(".member-name").text(data.user);
+        $(".member-name").text(data.email);
         $('.memberid').text(data.id);
         memberid = data.id
 
