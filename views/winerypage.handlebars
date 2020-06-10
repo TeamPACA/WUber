@@ -8,71 +8,43 @@
         </div>
         <div class="col-4">
             <h3> User Name : </h3>
-            <h5>Winery Name :</h5>
+            <h5>Winery Name :{{data.wineryname}}</h5>
             <h5>Street Name :</h5>
         </div>
     </div>
 
     <div class="row">
         <div class="col-7">
+            {{#each data.Wines}}
+
             <div class="card mb-3" style="max-width: 540px;">
                 <div class="row no-gutters">
                     <div class="col-md-4">
                         <img src="..." class="card-img" alt="...">
                     </div>
-                    {{#each Wines}}
                     <div class="col-md-8">
-
                         <div class="card-body">
                             <h5 class="card-title">{{winename}}</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    {{/each}}
-                </div>
-            </div>
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <p class="card-text">{{description}}</p>
+                            <p class="card-text"><small class="text-muted">??????</small></p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural
-                                lead-in to additional content. This content is a little bit longer.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {{/each}}
+
         </div>
 
         <div class="col-5">
+            {{#each data.Events}}
+            {{#unless isPast}}
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Events</li>
-                <li class="list-group-item">Barosa</li>
-                <li class="list-group-item">aaaaaaa</li>
-                <li class="list-group-item">vvvvvvv</li>
-                <li class="list-group-item">bbbbbbbbbbb</li>
+                <li class="list-group-item">{{eventname}}</li>
+                <li class="list-group-item">{{time}}</li>
+                <li class="list-group-item">{{date}}</li>
             </ul>
+            {{/unless}}
+            {{/each}}
         </div>
     </div>
 </div>
@@ -83,3 +55,14 @@
         </div>
     </div>
 </nav>
+
+{{#each data.Wines}}
+<h1>{{id}}</h1>
+<h1>{{winename}}</h1>
+{{/each}}
+
+
+{{#each data.Events}}
+<h1>{{id}}</h1>
+<h1>hmm</h1>
+{{/each}}

@@ -108,8 +108,10 @@ module.exports = function (app) {
 
     console.log(req.body)
     db.Wine.create(req.body).then(function (result) {
+      console.log(result)
       res.json(result);
     }).catch(function (err) {
+      console.log(err)
       res.status(401).json(err);
     });
   });
