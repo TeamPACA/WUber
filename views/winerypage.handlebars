@@ -1,0 +1,60 @@
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="TitleStyle">Welcome to {{data.wineryname}}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-7">
+            <h3 class="TitleStyle mb-4">Wine Selection</h3>
+        </div>
+        <div class="col-5">
+            <h3 class="TitleStyle mb-4">Up-Coming Events</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-7">
+            {{#each data.Wines}}
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img src="/old/assets/img/werypR.png" class="card-imgw" alt="IMAGE NOT WORKING">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title"><strong>{{winename}}, {{year}}</strong></h5>
+                            <h3 class="card-title">{{variety}}</h3>
+                            <p class="card-text">{{description}}</p>
+                            <h6 class="card-text text-muted">${{price}} AUD <button
+                                    class="btn btn-primary">Purchase</button></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+
+        <div class="col-5">
+            {{#each data.Events}}
+            {{#unless isPast}}
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{eventname}}</li>
+                <li class="list-group-item">{{time}}</li>
+                <li class="list-group-item">{{date}}</li>
+                <li class="list-group-item"><button class="btn btn-primary">Book this event!</button></li>
+            </ul>
+            {{/unless}}
+            {{/each}}
+        </div>
+    </div>
+</div>
+<br>
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+        </div>
+    </div>
+</nav>

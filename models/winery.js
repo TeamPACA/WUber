@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataType){
+module.exports = function (sequelize, DataType) {
     const Wineries = sequelize.define("Wineries", {
         wineryname: {
             type: DataType.STRING,
@@ -30,26 +30,17 @@ module.exports = function(sequelize, DataType){
                 isEmail: true
             }
         },
-        FK_Userid:{
+        FK_Userid: {
             type: DataType.STRING,
         }
 
     });
-    // Wineries.associate = function(models){
-    //     Wineries.belongsTo(models.User, {
-    //         foreginKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
 
-    Wineries.associate = function(models){
-        Wineries.hasMany(models.Event,{
+    Wineries.associate = function (models) {
+        Wineries.hasMany(models.Event, {
             onDelete: "cascade"
         });
-    };
-    Wineries.associate = function(models){
-        Wineries.hasMany(models.Wine,{
+        Wineries.hasMany(models.Wine, {
             onDelete: "cascade"
         });
     };

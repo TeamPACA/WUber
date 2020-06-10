@@ -5,6 +5,15 @@ $(document).ready(function () {
 
 
 
+
+  // function getWineryPage(id) {
+  //   $.get("/winerypage/" + id, function (data) {
+  //     console.log(data)
+  //   }).then(function (data) {
+  //     console.log(data)
+  //   })
+  // }
+
   $.get("/api/user_data").then(function (data) {
     $(".member-name").text(data.email);
   });
@@ -25,6 +34,7 @@ $(document).ready(function () {
     })
 
   }
+
 
   function getwineries(id) {
     $.get("/api/wineries_name/" + id, function (data) {
@@ -49,13 +59,14 @@ $(document).ready(function () {
           </p>
           <p class="card-text"><strong>PH: ${data.winephone}</strong>
           <p class="card-text">${data.wineemail}</p>
-          <button class="btn btn-primary" id="enter-winery-btn" data=${data.id}>View this winery!</button>
+          <a href="/winerypage/${data.id}"><button class="btn btn-primary winery-btn" id="enter-winery-btn" data="${data.id}">View this winery!</button></a>
         </div>
       </div>
     </div>
   </div>`
     return wineryCard
   }
+
 
 
   $("#search-for-winery-btn").on("click", searchForWinery)
