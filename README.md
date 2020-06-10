@@ -19,7 +19,7 @@ SO I CAN _so that i can reach a larger audience and sell more wine
 | HTML | CSS | JavaScript | Node.js | Sequelize | Express-Handlebars. 
 
 # Deployment
-(link)
+https://wuber-wines.herokuapp.com/
 
 # Final Presentation
 https://docs.google.com/presentation/d/1uj5HBbFrB0nB-4Zt4MTmTjiuduoFbvJgpnleBFa2x_A/edit?usp=sharing
