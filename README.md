@@ -22,7 +22,7 @@ SO I CAN _so that i can reach a larger audience and sell more wine
 (link)
 
 # Final Presentation
-https://docs.google.com/presentation/d/1uj5HBbFrB0nB-4Zt4MTmTjiuduoFbvJgpnleBFa2x_A/edit#slide=id.g89643ef303_0_3154
+https://docs.google.com/presentation/d/1uj5HBbFrB0nB-4Zt4MTmTjiuduoFbvJgpnleBFa2x_A/edit?usp=sharing
 
 # Authors
 Alex Waite https://github.com/Alex-Waite
