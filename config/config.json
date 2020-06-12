@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "C@esar99",
-    "database": "Uberwine",
+    "password": null,
+    "database": "Platform",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -14,7 +14,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "use_env_variable":JAWSDB_URL,
+    "host":	"l7cup2om0gngra77.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",	
+    "username":	"v2d8ec8vwhw47s7s",	
+    "password":	"l3sdb123c9q4zpb8",	
+    "database":	"pakzto9e0ttjsfm8",
+    "use_env_variable":"JAWSDB_URL",
     "dialect": "mysql"
   }
 }
